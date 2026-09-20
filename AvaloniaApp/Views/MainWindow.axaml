@@ -1,0 +1,1351 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:AvaloniaApp.ViewModels"
+    xmlns:controls="using:AvaloniaApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="AvaloniaApp.Views.MainWindow"
+    x:DataType="vm:MainViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="Avalonia"
+    Width="1440"
+    Height="900"
+    MinWidth="1050"
+    MinHeight="700"
+    Background="#090C12">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Window.Styles>
+
+        <!-- ========================================================= -->
+        <!-- GLOBAL                                                     -->
+        <!-- ========================================================= -->
+
+        <Style Selector="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Foreground" Value="#F3F5F9"/>
+        </Style>
+
+        <!-- ========================================================= -->
+        <!-- NAVIGATION BUTTONS                                         -->
+        <!-- ========================================================= -->
+
+        <Style Selector="Button.nav">
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Margin" Value="8,3"/>
+            <Setter Property="Padding" Value="14,0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#7F8A9E"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style Selector="Button.nav:pointerover">
+            <Setter Property="Background" Value="#171C27"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+        </Style>
+
+        <Style Selector="Button.nav-selected">
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Margin" Value="8,3"/>
+            <Setter Property="Padding" Value="14,0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#6C5CE7"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!-- ========================================================= -->
+        <!-- TOP BUTTON                                                 -->
+        <!-- ========================================================= -->
+
+        <Style Selector="Button.primary">
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Padding" Value="18,0"/>
+            <Setter Property="Background" Value="#6C5CE7"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="Button.primary:pointerover">
+            <Setter Property="Background" Value="#7B6AF4"/>
+        </Style>
+
+        <!-- ========================================================= -->
+        <!-- CARD                                                        -->
+        <!-- ========================================================= -->
+
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="#111620"/>
+            <Setter Property="BorderBrush" Value="#1D2532"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+        </Style>
+
+        <Style Selector="Border.card:pointerover">
+            <Setter Property="Background" Value="#141A25"/>
+            <Setter Property="BorderBrush" Value="#2C3547"/>
+        </Style>
+
+        <!-- ========================================================= -->
+        <!-- SMALL TAG                                                   -->
+        <!-- ========================================================= -->
+
+        <Style Selector="Border.tag">
+            <Setter Property="Background" Value="#171D29"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Padding" Value="9,5"/>
+        </Style>
+
+    </Window.Styles>
+
+
+    <!-- ============================================================= -->
+    <!-- MAIN LAYOUT                                                    -->
+    <!-- ============================================================= -->
+
+    <Grid ColumnDefinitions="225,*">
+
+        <!-- ========================================================= -->
+        <!-- SIDEBAR                                                     -->
+        <!-- ========================================================= -->
+
+        <Border
+            Grid.Column="0"
+            Background="#0D1118"
+            BorderBrush="#181E29"
+            BorderThickness="0,0,1,0">
+
+            <Grid RowDefinitions="Auto,*,Auto">
+
+                <!-- LOGO -->
+
+                <Grid
+                    Grid.Row="0"
+                    Margin="20,22,20,28"
+                    ColumnDefinitions="40,*"
+                    VerticalAlignment="Center">
+
+                    <Border
+                        Width="40"
+                        Height="40"
+                        CornerRadius="11"
+                        Background="#6C5CE7">
+
+                        <TextBlock
+                            Text="A"
+                            FontSize="21"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Border>
+
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="12,0,0,0"
+                        VerticalAlignment="Center">
+
+                        <TextBlock
+                            Text="AVALONIA"
+                            FontSize="15"
+                            FontWeight="Bold"
+                            LetterSpacing="2"/>
+
+                        <TextBlock
+                            Text="CONTROL CENTER"
+                            Margin="0,3,0,0"
+                            FontSize="8"
+                            Foreground="#596477"
+                            LetterSpacing="1"/>
+                    </StackPanel>
+
+                </Grid>
+
+
+                <!-- NAVIGATION -->
+
+                <ScrollViewer
+                    Grid.Row="1"
+                    VerticalScrollBarVisibility="Hidden">
+
+                    <StackPanel>
+
+                        <TextBlock
+                            Text="WORKSPACE"
+                            Margin="20,0,0,8"
+                            FontSize="9"
+                            FontWeight="Bold"
+                            Foreground="#4F596B"
+                            LetterSpacing="1.5"/>
+
+                        <Button Classes="nav-selected">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="◈"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Text="Overview"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Classes="nav">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="▦"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Text="Analytics"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Classes="nav">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="◉"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Text="Activity"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Classes="nav">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="◇"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Text="Projects"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+
+                        <TextBlock
+                            Text="SYSTEM"
+                            Margin="20,28,0,8"
+                            FontSize="9"
+                            FontWeight="Bold"
+                            Foreground="#4F596B"
+                            LetterSpacing="1.5"/>
+
+                        <Button Classes="nav">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="⚙"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Text="Settings"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Classes="nav">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="?"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Text="Help Center"
+                                    VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+
+                </ScrollViewer>
+
+
+                <!-- USER -->
+
+                <Border
+                    Grid.Row="2"
+                    Margin="14"
+                    Padding="11"
+                    Background="#121721"
+                    CornerRadius="12">
+
+                    <Grid ColumnDefinitions="38,*,Auto">
+
+                        <Border
+                            Width="36"
+                            Height="36"
+                            CornerRadius="18"
+                            Background="#272D46">
+
+                            <TextBlock
+                                Text="VĐ"
+                                FontSize="10"
+                                FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center">
+
+                            <TextBlock
+                                Text="Velimir Đurković"
+                                FontSize="12"
+                                FontWeight="SemiBold"/>
+
+                            <TextBlock
+                                Text="Administrator"
+                                Margin="0,2,0,0"
+                                FontSize="9"
+                                Foreground="#606C80"/>
+                        </StackPanel>
+
+                        <TextBlock
+                            Grid.Column="2"
+                            Text="•••"
+                            FontSize="12"
+                            Foreground="#687388"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+        </Border>
+
+
+        <!-- ========================================================= -->
+        <!-- CONTENT                                                      -->
+        <!-- ========================================================= -->
+
+        <Grid
+            Grid.Column="1"
+            Margin="30"
+            RowDefinitions="Auto,*">
+
+            <!-- HEADER -->
+
+            <Grid
+                Grid.Row="0"
+                Margin="0,0,0,25"
+                ColumnDefinitions="*,Auto">
+
+                <StackPanel>
+
+                    <TextBlock
+                        Text="{Binding Greeting}"
+                        FontSize="27"
+                        FontWeight="SemiBold"/>
+
+                    <TextBlock
+                        Text="{Binding Subtitle}"
+                        Margin="0,6,0,0"
+                        FontSize="12"
+                        Foreground="#687388"/>
+                </StackPanel>
+
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    Spacing="10"
+                    VerticalAlignment="Center">
+
+                    <Border Classes="tag">
+
+                        <TextBlock
+                            Text="◷  Sep 20, 2026"
+                            FontSize="11"
+                            Foreground="#8A95A8"
+                            VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Button Classes="primary">
+
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Spacing="7"
+                            VerticalAlignment="Center">
+
+                            <TextBlock
+                                Text="+"
+                                FontSize="18"
+                                VerticalAlignment="Center"/>
+
+                            <TextBlock
+                                Text="New Project"
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+
+
+            <!-- DASHBOARD -->
+
+            <ScrollViewer
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Auto">
+
+                <StackPanel Spacing="16">
+
+                    <!-- ================================================= -->
+                    <!-- KPI ROW                                             -->
+                    <!-- ================================================= -->
+
+                    <Grid
+                        ColumnDefinitions="*,*,*,*"
+                        ColumnSpacing="14">
+
+                        <!-- REVENUE -->
+
+                        <Border
+                            Grid.Column="0"
+                            Classes="card"
+                            Padding="19">
+
+                            <StackPanel Spacing="13">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <TextBlock
+                                        Text="TOTAL REVENUE"
+                                        FontSize="9"
+                                        FontWeight="Bold"
+                                        Foreground="#687388"
+                                        LetterSpacing="1"/>
+
+                                    <Border
+                                        Grid.Column="1"
+                                        Width="32"
+                                        Height="32"
+                                        CornerRadius="9"
+                                        Background="#192C29">
+
+                                        <TextBlock
+                                            Text="↗"
+                                            Foreground="#4DE1B0"
+                                            FontSize="17"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                </Grid>
+
+                                <TextBlock
+                                    Text="$84,290"
+                                    FontSize="26"
+                                    FontWeight="Bold"/>
+
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="7">
+
+                                    <TextBlock
+                                        Text="+18.4%"
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="#4DE1B0"/>
+
+                                    <TextBlock
+                                        Text="vs last month"
+                                        FontSize="10"
+                                        Foreground="#596477"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+
+
+                        <!-- USERS -->
+
+                        <Border
+                            Grid.Column="1"
+                            Classes="card"
+                            Padding="19">
+
+                            <StackPanel Spacing="13">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <TextBlock
+                                        Text="ACTIVE USERS"
+                                        FontSize="9"
+                                        FontWeight="Bold"
+                                        Foreground="#687388"
+                                        LetterSpacing="1"/>
+
+                                    <Border
+                                        Grid.Column="1"
+                                        Width="32"
+                                        Height="32"
+                                        CornerRadius="9"
+                                        Background="#202441">
+
+                                        <TextBlock
+                                            Text="◉"
+                                            Foreground="#8A7CFF"
+                                            FontSize="16"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                </Grid>
+
+                                <TextBlock
+                                    Text="12,847"
+                                    FontSize="26"
+                                    FontWeight="Bold"/>
+
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="7">
+
+                                    <TextBlock
+                                        Text="+12.8%"
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="#4DE1B0"/>
+
+                                    <TextBlock
+                                        Text="this week"
+                                        FontSize="10"
+                                        Foreground="#596477"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+
+
+                        <!-- CONVERSION -->
+
+                        <Border
+                            Grid.Column="2"
+                            Classes="card"
+                            Padding="19">
+
+                            <StackPanel Spacing="13">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <TextBlock
+                                        Text="CONVERSION"
+                                        FontSize="9"
+                                        FontWeight="Bold"
+                                        Foreground="#687388"
+                                        LetterSpacing="1"/>
+
+                                    <Border
+                                        Grid.Column="1"
+                                        Width="32"
+                                        Height="32"
+                                        CornerRadius="9"
+                                        Background="#30271D">
+
+                                        <TextBlock
+                                            Text="%"
+                                            Foreground="#FFB454"
+                                            FontSize="14"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                </Grid>
+
+                                <TextBlock
+                                    Text="8.42%"
+                                    FontSize="26"
+                                    FontWeight="Bold"/>
+
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="7">
+
+                                    <TextBlock
+                                        Text="+2.1%"
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="#4DE1B0"/>
+
+                                    <TextBlock
+                                        Text="conversion rate"
+                                        FontSize="10"
+                                        Foreground="#596477"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+
+
+                        <!-- HEALTH -->
+
+                        <Border
+                            Grid.Column="3"
+                            Classes="card"
+                            Padding="19">
+
+                            <StackPanel Spacing="13">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <TextBlock
+                                        Text="SYSTEM HEALTH"
+                                        FontSize="9"
+                                        FontWeight="Bold"
+                                        Foreground="#687388"
+                                        LetterSpacing="1"/>
+
+                                    <Border
+                                        Grid.Column="1"
+                                        Width="32"
+                                        Height="32"
+                                        CornerRadius="9"
+                                        Background="#192C29">
+
+                                        <TextBlock
+                                            Text="✓"
+                                            Foreground="#4DE1B0"
+                                            FontSize="15"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                </Grid>
+
+                                <TextBlock
+                                    Text="99.98%"
+                                    FontSize="26"
+                                    FontWeight="Bold"/>
+
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="7">
+
+                                    <Ellipse
+                                        Width="7"
+                                        Height="7"
+                                        Fill="#4DE1B0"
+                                        VerticalAlignment="Center"/>
+
+                                    <TextBlock
+                                        Text="All systems operational"
+                                        FontSize="10"
+                                        Foreground="#596477"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+
+                    </Grid>
+
+
+                    <!-- ================================================= -->
+                    <!-- CHART + PERFORMANCE                                -->
+                    <!-- ================================================= -->
+
+                    <Grid
+                        ColumnDefinitions="2*,*"
+                        ColumnSpacing="16">
+
+                        <!-- CHART -->
+
+                        <Border
+                            Grid.Column="0"
+                            Classes="card"
+                            Padding="20"
+                            MinHeight="330">
+
+                            <Grid RowDefinitions="Auto,*">
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <StackPanel>
+
+                                        <TextBlock
+                                            Text="Revenue Overview"
+                                            FontSize="15"
+                                            FontWeight="SemiBold"/>
+
+                                        <TextBlock
+                                            Text="Monthly performance"
+                                            Margin="0,4,0,0"
+                                            FontSize="10"
+                                            Foreground="#657084"/>
+                                    </StackPanel>
+
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Orientation="Horizontal"
+                                        Spacing="5">
+
+                                        <Button
+                                            Height="30"
+                                            Padding="11,0"
+                                            Background="#6C5CE7"
+                                            Foreground="White"
+                                            BorderThickness="0"
+                                            CornerRadius="7"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center">
+
+                                            <TextBlock
+                                                Text="6 Months"
+                                                FontSize="9"
+                                                FontWeight="SemiBold"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                        <Button
+                                            Height="30"
+                                            Padding="11,0"
+                                            Background="#171D28"
+                                            Foreground="#69758A"
+                                            BorderThickness="0"
+                                            CornerRadius="7"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center">
+
+                                            <TextBlock
+                                                Text="1 Year"
+                                                FontSize="9"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+
+                                <!-- GRAPH -->
+
+                                <Grid
+                                    Grid.Row="1"
+                                    Margin="0,20,0,0">
+
+                                    <Grid
+                                        RowDefinitions="*,*,*,*,*">
+
+                                        <Border
+                                            BorderBrush="#1C2430"
+                                            BorderThickness="0,1,0,0"/>
+
+                                        <Border
+                                            Grid.Row="1"
+                                            BorderBrush="#1C2430"
+                                            BorderThickness="0,1,0,0"/>
+
+                                        <Border
+                                            Grid.Row="2"
+                                            BorderBrush="#1C2430"
+                                            BorderThickness="0,1,0,0"/>
+
+                                        <Border
+                                            Grid.Row="3"
+                                            BorderBrush="#1C2430"
+                                            BorderThickness="0,1,0,0"/>
+
+                                        <Border
+                                            Grid.Row="4"
+                                            BorderBrush="#1C2430"
+                                            BorderThickness="0,1,0,0"/>
+
+                                    </Grid>
+
+
+                                    <!-- BAR CHART -->
+
+                                    <Grid
+                                        Margin="15,10,15,25"
+                                        ColumnDefinitions="*,*,*,*,*,*,*,*"
+                                        VerticalAlignment="Bottom">
+
+                                        <Border
+                                            Grid.Column="0"
+                                            Height="70"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#342C71"/>
+
+                                        <Border
+                                            Grid.Column="1"
+                                            Height="105"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#41378C"/>
+
+                                        <Border
+                                            Grid.Column="2"
+                                            Height="90"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#4C409F"/>
+
+                                        <Border
+                                            Grid.Column="3"
+                                            Height="145"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#594AB7"/>
+
+                                        <Border
+                                            Grid.Column="4"
+                                            Height="125"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#6252C8"/>
+
+                                        <Border
+                                            Grid.Column="5"
+                                            Height="180"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#6C5CE7"/>
+
+                                        <Border
+                                            Grid.Column="6"
+                                            Height="155"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#7768EF"/>
+
+                                        <Border
+                                            Grid.Column="7"
+                                            Height="205"
+                                            Margin="8,0"
+                                            CornerRadius="5,5,2,2"
+                                            Background="#8578FF"/>
+
+                                    </Grid>
+
+
+                                    <!-- MONTH LABELS -->
+
+                                    <Grid
+                                        VerticalAlignment="Bottom"
+                                        Margin="15,0,15,0"
+                                        ColumnDefinitions="*,*,*,*,*,*,*,*">
+
+                                        <TextBlock
+                                            Text="Jan"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Text="Feb"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="2"
+                                            Text="Mar"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="3"
+                                            Text="Apr"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="4"
+                                            Text="May"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="5"
+                                            Text="Jun"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="6"
+                                            Text="Jul"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                        <TextBlock
+                                            Grid.Column="7"
+                                            Text="Aug"
+                                            HorizontalAlignment="Center"
+                                            FontSize="9"
+                                            Foreground="#4F596B"/>
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </Grid>
+                        </Border>
+
+
+                        <!-- PERFORMANCE -->
+
+                        <Border
+                            Grid.Column="1"
+                            Classes="card"
+                            Padding="20">
+
+                            <StackPanel>
+
+                                <TextBlock
+                                    Text="Performance"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"/>
+
+                                <TextBlock
+                                    Text="Current month"
+                                    Margin="0,4,0,18"
+                                    FontSize="10"
+                                    Foreground="#657084"/>
+
+
+                                <Grid
+                                    Width="165"
+                                    Height="165"
+                                    HorizontalAlignment="Center">
+
+                                    <controls:CircularProgress
+                                        Value="82"
+                                        Width="165"
+                                        Height="165"/>
+
+                                    <StackPanel
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                        <TextBlock
+                                            Text="82%"
+                                            FontSize="27"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Center"/>
+
+                                        <TextBlock
+                                            Text="complete"
+                                            FontSize="10"
+                                            Foreground="#657084"
+                                            HorizontalAlignment="Center"/>
+                                    </StackPanel>
+
+                                </Grid>
+
+
+                                <Grid
+                                    Margin="0,20,0,0"
+                                    ColumnDefinitions="*,*,*">
+
+                                    <StackPanel>
+
+                                        <TextBlock
+                                            Text="GOAL"
+                                            FontSize="8"
+                                            Foreground="#596477"/>
+
+                                        <TextBlock
+                                            Text="$100K"
+                                            Margin="0,4,0,0"
+                                            FontSize="12"
+                                            FontWeight="SemiBold"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1">
+
+                                        <TextBlock
+                                            Text="CURRENT"
+                                            FontSize="8"
+                                            Foreground="#596477"/>
+
+                                        <TextBlock
+                                            Text="$84K"
+                                            Margin="0,4,0,0"
+                                            FontSize="12"
+                                            FontWeight="SemiBold"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2">
+
+                                        <TextBlock
+                                            Text="DAYS LEFT"
+                                            FontSize="8"
+                                            Foreground="#596477"/>
+
+                                        <TextBlock
+                                            Text="10"
+                                            Margin="0,4,0,0"
+                                            FontSize="12"
+                                            FontWeight="SemiBold"/>
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+                        </Border>
+
+                    </Grid>
+
+
+                    <!-- ================================================= -->
+                    <!-- BOTTOM ROW                                          -->
+                    <!-- ================================================= -->
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="16">
+
+                        <!-- ACTIVITY -->
+
+                        <Border
+                            Grid.Column="0"
+                            Classes="card"
+                            Padding="20">
+
+                            <StackPanel>
+
+                                <Grid ColumnDefinitions="*,Auto">
+
+                                    <TextBlock
+                                        Text="Recent Activity"
+                                        FontSize="15"
+                                        FontWeight="SemiBold"/>
+
+                                    <Button
+                                        Grid.Column="1"
+                                        Padding="5,0"
+                                        Height="30"
+                                        Background="Transparent"
+                                        Foreground="#8174F5"
+                                        BorderThickness="0"
+                                        VerticalContentAlignment="Center">
+
+                                        <TextBlock
+                                            Text="View all →"
+                                            FontSize="10"
+                                            VerticalAlignment="Center"/>
+                                    </Button>
+
+                                </Grid>
+
+
+                                <Grid
+                                    Margin="0,18,0,0"
+                                    ColumnDefinitions="36,*,Auto">
+
+                                    <Border
+                                        Width="34"
+                                        Height="34"
+                                        CornerRadius="10"
+                                        Background="#202441">
+
+                                        <TextBlock
+                                            Text="JD"
+                                            FontSize="9"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center">
+
+                                        <TextBlock
+                                            Text="New project created"
+                                            FontSize="11"
+                                            FontWeight="SemiBold"/>
+
+                                        <TextBlock
+                                            Text="Dashboard redesign"
+                                            Margin="0,2,0,0"
+                                            FontSize="9"
+                                            Foreground="#596477"/>
+                                    </StackPanel>
+
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Text="2m ago"
+                                        FontSize="9"
+                                        Foreground="#596477"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+
+                                <Grid
+                                    Margin="0,14,0,0"
+                                    ColumnDefinitions="36,*,Auto">
+
+                                    <Border
+                                        Width="34"
+                                        Height="34"
+                                        CornerRadius="10"
+                                        Background="#192C29">
+
+                                        <TextBlock
+                                            Text="✓"
+                                            Foreground="#4DE1B0"
+                                            FontSize="15"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center">
+
+                                        <TextBlock
+                                            Text="Deployment successful"
+                                            FontSize="11"
+                                            FontWeight="SemiBold"/>
+
+                                        <TextBlock
+                                            Text="Production environment"
+                                            Margin="0,2,0,0"
+                                            FontSize="9"
+                                            Foreground="#596477"/>
+                                    </StackPanel>
+
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Text="18m ago"
+                                        FontSize="9"
+                                        Foreground="#596477"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+
+                                <Grid
+                                    Margin="0,14,0,0"
+                                    ColumnDefinitions="36,*,Auto">
+
+                                    <Border
+                                        Width="34"
+                                        Height="34"
+                                        CornerRadius="10"
+                                        Background="#30271D">
+
+                                        <TextBlock
+                                            Text="$"
+                                            Foreground="#FFB454"
+                                            FontSize="14"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center">
+
+                                        <TextBlock
+                                            Text="Payment received"
+                                            FontSize="11"
+                                            FontWeight="SemiBold"/>
+
+                                        <TextBlock
+                                            Text="$4,280 from Acme Inc."
+                                            Margin="0,2,0,0"
+                                            FontSize="9"
+                                            Foreground="#596477"/>
+                                    </StackPanel>
+
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Text="42m ago"
+                                        FontSize="9"
+                                        Foreground="#596477"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+
+                            </StackPanel>
+                        </Border>
+
+
+                        <!-- QUICK STATS -->
+
+                        <Border
+                            Grid.Column="1"
+                            Classes="card"
+                            Padding="20">
+
+                            <StackPanel>
+
+                                <TextBlock
+                                    Text="Quick Stats"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"/>
+
+                                <TextBlock
+                                    Text="This week's overview"
+                                    Margin="0,4,0,18"
+                                    FontSize="10"
+                                    Foreground="#657084"/>
+
+
+                                <Grid
+                                    RowDefinitions="Auto,Auto,Auto"
+                                    RowSpacing="15">
+
+                                    <Grid
+                                        ColumnDefinitions="*,Auto">
+
+                                        <TextBlock
+                                            Text="New users"
+                                            FontSize="11"
+                                            Foreground="#8A95A8"/>
+
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Text="1,284"
+                                            FontSize="12"
+                                            FontWeight="SemiBold"/>
+
+                                    </Grid>
+
+                                    <ProgressBar
+                                        Grid.Row="0"
+                                        Grid.ColumnSpan="2"
+                                        Height="4"
+                                        Margin="0,22,0,0"
+                                        Value="72"
+                                        Foreground="#7B6AF0"
+                                        Background="#1D2531"/>
+
+
+                                    <Grid
+                                        Grid.Row="1"
+                                        ColumnDefinitions="*,Auto">
+
+                                        <TextBlock
+                                            Text="Sessions"
+                                            FontSize="11"
+                                            Foreground="#8A95A8"/>
+
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Text="8,492"
+                                            FontSize="12"
+                                            FontWeight="SemiBold"/>
+
+                                    </Grid>
+
+                                    <ProgressBar
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Height="4"
+                                        Margin="0,22,0,0"
+                                        Value="84"
+                                        Foreground="#4BD7FF"
+                                        Background="#1D2531"/>
+
+
+                                    <Grid
+                                        Grid.Row="2"
+                                        ColumnDefinitions="*,Auto">
+
+                                        <TextBlock
+                                            Text="Retention"
+                                            FontSize="11"
+                                            Foreground="#8A95A8"/>
+
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Text="91.2%"
+                                            FontSize="12"
+                                            FontWeight="SemiBold"/>
+
+                                    </Grid>
+
+                                    <ProgressBar
+                                        Grid.Row="2"
+                                        Grid.ColumnSpan="2"
+                                        Height="4"
+                                        Margin="0,22,0,0"
+                                        Value="91"
+                                        Foreground="#4DE1B0"
+                                        Background="#1D2531"/>
+
+                                </Grid>
+
+                            </StackPanel>
+                        </Border>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
